@@ -41,7 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
+    'goods',
+    'trade',
+    'user_operation',
+    'xadmin',
+    'crispy_forms',
+    'DjangoUeditor'
 ]
+
+AUTH_USER_MODEL = 'users.UserProfile'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
