@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 import xadmin
+from goods.view_base import GoodsListView
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('xadmin/', xadmin.site.urls),
-    path('ueditor/', include('DjangoUeditor.urls'))
+    path('ueditor/', include('DjangoUeditor.urls')),
+    path('goods/', GoodsListView.as_view(), name='goods_list')
 ]
