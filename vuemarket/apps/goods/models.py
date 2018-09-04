@@ -19,7 +19,7 @@ class GoodCategory(models.Model):
     name = models.CharField('类别名', default='', max_length=30, help_text='类别名')
     code = models.CharField('类别code', default='', max_length=30, help_text='类别code')
     desc = models.TextField('类别描述', default='', help_text='类别描述')
-    category_type = models.CharField('类目级别', choices=CATEGORY_TYPE, help_text='类目级别', max_length=30)
+    category_type = models.IntegerField('类目级别', choices=CATEGORY_TYPE, help_text='类目级别')
     parent_category = models.ForeignKey('self', models.CASCADE, related_name='sub_cat',
                                         null=True, blank=True, verbose_name='父目录级别',
                                         help_text='父目录'
