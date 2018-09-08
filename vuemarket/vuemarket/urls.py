@@ -15,13 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.documentation import include_docs_urls
 
 import xadmin
-from goods.view_base import GoodsListView
+from goods.views import GoodsListView
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('xadmin/', xadmin.site.urls),
     path('ueditor/', include('DjangoUeditor.urls')),
-    path('goods/', GoodsListView.as_view(), name='goods_list')
+    path('goods/', GoodsListView.as_view(), name='goods_list'),
+    # drf文档的url
+    path('docs', include_docs_urls(title='商铺管理')),
+    path('api-auth/', include('rest_framework.urls')),
 ]

@@ -48,3 +48,6 @@ class GoodsListView(View):
         return JsonResponse(json_data, safe=False)
 
 
+
+
+
