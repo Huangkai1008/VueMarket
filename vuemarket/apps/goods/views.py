@@ -5,6 +5,9 @@ from .models import Goods
 from rest_framework.response import Response
 from rest_framework import mixins
 from rest_framework import generics
+from rest_framework.pagination import PageNumberPagination
+
+
 # Create your views here.
 
 
@@ -22,6 +25,15 @@ from rest_framework import generics
 #     def get(self, request, *args, **kwargs):
 #         return self.list(request, *args, **kwargs)
 
+class GoodsPagination(PageNumberPagination):
+    """
+    商品列表自定义分页
+    """
+    page_size = 10
+    page_size_query_param = 'page_size'
+    page_query_param = 'page'
+    max_page_size = 10
+
 
 class GoodsListView(generics.ListAPIView):
     """
@@ -29,4 +41,5 @@ class GoodsListView(generics.ListAPIView):
     """
     queryset = Goods.objects.all()
     serializer_class = GoodsSerializer
+    pagination_class = GoodsPagination
 
