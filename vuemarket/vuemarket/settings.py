@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'DjangoUeditor',
     'rest_framework',
+    'django_filters'
 ]
 
 AUTH_USER_MODEL = 'users.UserProfile'
@@ -93,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'market',
         'USER': 'root',
-        'PASSWORD': '111111',
+        'PASSWORD': '177036',
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {

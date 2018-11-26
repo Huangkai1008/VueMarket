@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from rest_framework.views import APIView
+from django_filters import filters
+from django_filters.rest_framework import DjangoFilterBackend
+
+from goods.filters import GoodsFilter
 from goods.serializers import GoodsSerializer
 from .models import Goods
-from rest_framework.response import Response
 from rest_framework import mixins
 from rest_framework import generics
 from rest_framework.pagination import PageNumberPagination
@@ -42,4 +43,24 @@ class GoodsListView(generics.ListAPIView):
     queryset = Goods.objects.all()
     serializer_class = GoodsSerializer
     pagination_class = GoodsPagination
+
+
+class GoodsListViewSet(mixins.ListModelMixin):
+    """
+    商品列表页
+    """
+    # 定义商品的默认排序
+    queryset = Goods.objects.all().order_by('id')
+    # 分页
+    pagination_class = GoodsPagination
+    # 序列化
+    serializer_class = GoodsSerializer
+    filter_backends = (DjangoFilterBackend, filters.OrderingFilter)
+
+    filter_class = GoodsFilter
+    search_fields = ('=name', 'goods_brief')
+    # 排序
+    ordering_fields = ('sold_num', 'add_times')
+
+
 
