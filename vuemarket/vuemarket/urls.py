@@ -17,7 +17,7 @@ from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
 
 import xadmin
-from goods.views import GoodsListView
+from goods.views import GoodsListView, CategoryViewSet
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
